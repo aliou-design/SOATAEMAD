@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOTAEMAD Club de Taekwondo</title>
+    <style>
+        /* Styles CSS pour le site */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f5;
+        }
+        header {
+            background-color: #1a1aff;
+            color: white;
+            padding: 1em;
+            text-align: center;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            color: #1a1aff;
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+        }
+        .button {
+            background-color: #ff3333;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            text-align: center;
+            display: inline-block;
+        }
+        .profile-info, .ticket-info {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 5px;
+        }
+        .ticket-info {
+            background-color: #fff7e6;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Club SOTAEMAD - Gestion des Compétitions</h1>
+</header>
+
+<div class="container">
+    <h2>Inscription du Combattant</h2>
+    <div class="form-group">
+        <label for="name">Nom :</label>
+        <input type="text" id="name" placeholder="Nom du combattant">
+    </div>
+    <div class="form-group">
+        <label for="grade">Grade :</label>
+        <select id="grade">
+            <option value="Ceinture Blanche">Ceinture Blanche</option>
+            <option value="Ceinture Jaune">Ceinture Jaune</option>
+            <option value="Ceinture Verte">Ceinture Verte</option>
+            <option value="Ceinture Bleue">Ceinture Bleue</option>
+            <option value="Ceinture Rouge">Ceinture Rouge</option>
+            <option value="Ceinture Noire">Ceinture Noire</option>
+        </select>
+    </div>
+    <button class="button" onclick="registerFighter()">Inscrire le Combattant</button>
+
+    <div id="profile" class="profile-info" style="display: none;">
+        <h3>Informations du Combattant</h3>
+        <p id="profileName"></p>
+        <p id="profileGrade"></p>
+    </div>
+
+    <h2>Tickets de Compétition</h2>
+    <div class="form-group">
+        <label for="ticketType">Type de Ticket :</label>
+        <select id="ticketType">
+            <option value="Poomsae">Poomsae</option>
+            <option value="Kyorugi">Kyorugi</option>
+            <option value="Coach">Coach</option>
+        </select>
+    </div>
+    <button class="button" onclick="generateTicket()">Générer le Ticket</button>
+
+    <div id="ticket" class="ticket-info" style="display: none;">
+        <h3>Ticket de Compétition</h3>
+        <p id="ticketDetails"></p>
+    </div>
+</div>
+
+<script>
+    // Fonction pour inscrire un combattant
+    function registerFighter() {
+        const name = document.getElementById("name").value;
+        const grade = document.getElementById("grade").value;
+
+        if (name === "") {
+            alert("Veuillez entrer un nom !");
+            return;
+        }
+
+        document.getElementById("profileName").innerText = "Nom : " + name;
+        document.getElementById("profileGrade").innerText = "Grade : " + grade;
+        document.getElementById("profile").style.display = "block";
+    }
+
+    // Fonction pour générer un ticket
+    function generateTicket() {
+        const ticketType = document.getElementById("ticketType").value;
+
+        document.getElementById("ticketDetails").innerText = `Type de Ticket : ${ticketType}`;
+        document.getElementById("ticket").style.display = "block";
+    }
+</script>
+
+</body>
+</html>
